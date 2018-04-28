@@ -17,6 +17,10 @@
             <input type="text" name="disponibilidade" id="disponibilidade"/>
             <p> Quantidade de dias disponíveis (Por exemplo: 15) </p>
             <input type="text" name="dias" id="dias"/>
+            <p> Digite um login </p>
+            <input type="text" name="login" id="login"/>
+            <p> Digite uma senha </p>
+            <input type="text" name="senha" id="senha"/>
             <p> <input type="hidden" name="operacaoAdicionarParticipante" value="incluir">
                 <input type="submit" value="Adicionar"> </p>
         </form>

@@ -6,16 +6,18 @@ public class Pessoa {
     private String disponibilidade;
     private Integer qtddDias;
     private String qualificacao;
+    private String login;
+    private String senha;
 
-    public Pessoa(Integer id, String nome, String disponibilidade, Integer qtddDias, String qualificacao) {
+    public Pessoa(Integer id, String nome, String disponibilidade, Integer qtddDias, String login, String senha) {
         this.id = id;
         this.nome = nome;
         this.disponibilidade = disponibilidade;
         this.qtddDias = qtddDias;
-        this.qualificacao = qualificacao;
+        this.qualificacao = "Erro";
+        this.login = login;
+        this.senha = senha;
     }
-
-
 
     public Integer getQtddDias() {
         return qtddDias;
@@ -55,6 +57,22 @@ public class Pessoa {
 
     public void setQualificacao(String qualificacao) {
         this.qualificacao = qualificacao;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
     
     
