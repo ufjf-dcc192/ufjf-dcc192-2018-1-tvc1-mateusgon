@@ -3,6 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
         <h1> Inscrição </h1>
-        <a href="cadastrar.html"> Ver pedidos </a>
+        <a href="cadastrar.html"> Realiza já sua inscrição! </a>
             
 <%@include file="jspf/rodape-listarFuncionamento.jspf"%>
