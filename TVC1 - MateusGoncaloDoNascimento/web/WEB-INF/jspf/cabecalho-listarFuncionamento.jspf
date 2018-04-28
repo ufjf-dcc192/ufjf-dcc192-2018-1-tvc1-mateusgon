@@ -14,7 +14,8 @@
     <menu>
         <li> <a href="controlador.html"> Home </a> </li>
         <li> <a href="controlador.html"> Corpo UFJF e Intercambista </a> </li>
-        <li> <a href="controlador.html"> Inscritos </a> </li>
+        <li> <a href="inscritos.html"> Inscritos </a> </li>
+        <li> <a href="inscritosadm.html"> Inscritos Administração </a> </li>
     </menu>
     
 </aside>        
