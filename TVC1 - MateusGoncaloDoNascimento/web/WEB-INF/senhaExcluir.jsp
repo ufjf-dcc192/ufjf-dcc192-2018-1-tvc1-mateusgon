@@ -7,9 +7,7 @@
             <input type="text" name="login" id="login"/>
             <p> Senha </p>
             <input type="text" name="senha" id="senha"/>
-            <input type="hidden" value="${pessoa.id}" id="pessoa"/>
-            <input type="hidden" value="${idTipo}" id="tipoP"/>
-        <p> <input type="hidden" name="operacaoVerTodosInscritos" value="incluir">
+        <p> <input type="hidden" name="operacaoSenha" value="incluir">
             <input type="submit" value="Conferir"> </p>
         </form>
 

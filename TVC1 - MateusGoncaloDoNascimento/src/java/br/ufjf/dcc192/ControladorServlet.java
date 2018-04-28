@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Controlador", urlPatterns = {"/controlador.html", "/cadastrar.html", "/erro.html", "/confirmacao.html", "/inscritos.html", "/senhaadm.html", "/inscritosadm.html"})
+@WebServlet(name = "Controlador", urlPatterns = {"/controlador.html", "/cadastrar.html", "/erro.html", "/confirmacao.html", "/inscritos.html", "/senhaadm.html", "/inscritosadm.html", "/modificar.html", "/excluir.html"})
 public class ControladorServlet extends HttpServlet {
 
     String loginAdm = "admin";
@@ -94,6 +94,49 @@ public class ControladorServlet extends HttpServlet {
                 response.sendRedirect("erro.html");
             }
         }
+        if (request.getParameter("operacaoSenha") != null)
+        {
+            String email = request.getParameter("login");
+            String senha = request.getParameter("senha");
+            Integer id = Integer.parseInt(request.getParameter("pessoa"));
+            Integer id2 = Integer.parseInt(request.getParameter("tipoP"));
+            if (id2 == 0)
+            {
+                Pessoa p = ListaDeParticipantes.getIntercambista().get(id);
+                if (p.getLogin().equals(email) && p.getSenha().equals(senha))
+                {
+                    ListaDeParticipantes.getIntercambista().remove(p);
+                                    response.sendRedirect("controlador.html");
+                }
+            }
+            if (id2 == 1)
+            {
+                Pessoa p = ListaDeParticipantes.getDocente().get(id);
+                if (p.getLogin().equals(email) && p.getSenha().equals(senha))
+                {
+                    ListaDeParticipantes.getDocente().remove(p);
+                                    response.sendRedirect("controlador.html");
+                }
+            }
+            if (id2 == 2)
+            {
+                Pessoa p = ListaDeParticipantes.getTAE().get(id);
+                if (p.getLogin().equals(email) && p.getSenha().equals(senha))
+                {
+                    ListaDeParticipantes.getTAE().remove(p);
+                                    response.sendRedirect("controlador.html");
+                }
+            }
+            if (id2 == 3)
+            {
+                Pessoa p = ListaDeParticipantes.getEstudante().get(id);
+                if (p.getLogin().equals(email) && p.getSenha().equals(senha))
+                {
+                    ListaDeParticipantes.getEstudante().remove(p);
+                                    response.sendRedirect("controlador.html");
+                }
+            }
+        }
     }
 
     
@@ -126,6 +169,10 @@ public class ControladorServlet extends HttpServlet {
        if ("/inscritosadm.html".equals(request.getServletPath()))
        {
            listarInscritosAdm(request, response);
+       }
+       if ("/excluir.html".equals(request.getServletPath()))
+       {
+           excluirParticipante(request, response);
        }
     }
 
@@ -199,6 +246,35 @@ public class ControladorServlet extends HttpServlet {
 
     private void listarSenha(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/senha.jsp");
+        despachante.forward(request, response);
+    }
+
+    private void excluirParticipante(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int codigoPessoa = Integer.parseInt(request.getParameter("codigo"));
+        int idTipo = Integer.parseInt(request.getParameter("codigo2"));
+        request.setAttribute("codigoPessoa", codigoPessoa);
+        request.setAttribute("idTipo", idTipo);
+        if (idTipo == 0)
+        {
+            Pessoa p = ListaDeParticipantes.getIntercambista().get(codigoPessoa);
+            request.setAttribute("pessoa", p);
+        }
+        if (idTipo == 1)
+        {
+            Pessoa p = ListaDeParticipantes.getDocente().get(codigoPessoa);
+            request.setAttribute("pessoa", p);
+        }
+        if (idTipo == 2)
+        {
+            Pessoa p = ListaDeParticipantes.getTAE().get(codigoPessoa);
+            request.setAttribute("pessoa", p);
+        }
+        if (idTipo == 3)
+        {
+            Pessoa p = ListaDeParticipantes.getEstudante().get(codigoPessoa);
+            request.setAttribute("pessoa", p);   
+        }
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/senhaExcluir.jsp");
         despachante.forward(request, response);
     }
     
