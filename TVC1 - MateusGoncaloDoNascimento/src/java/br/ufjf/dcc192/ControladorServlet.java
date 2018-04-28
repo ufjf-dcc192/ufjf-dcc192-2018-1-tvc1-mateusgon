@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Controlador", urlPatterns = {"/controlador.html"})
+@WebServlet(name = "Controlador", urlPatterns = {"/controlador.html", "/cadastrar.html"})
 public class ControladorServlet extends HttpServlet {
 
     @Override
@@ -18,10 +18,19 @@ public class ControladorServlet extends HttpServlet {
        {
            listarInicio(request, response);           
        }
+       if ("/cadastrar.html".equals(request.getServletPath()))
+       {
+           listarCadastro(request, response);
+       }
     }
 
     private void listarInicio(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/listarFuncionamento.jsp");
+        despachante.forward(request, response);
+    }
+
+    private void listarCadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/fichaDeCadastro.jsp");
         despachante.forward(request, response);
     }
 }

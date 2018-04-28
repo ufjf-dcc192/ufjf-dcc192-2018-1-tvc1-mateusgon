@@ -1,3 +1,20 @@
-<%-- any content can be specified here e.g.: --%>
-<%@ page pageEncoding="UTF-8" %>
-<h2>Hello World!</h2>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title> Inscrição - Projeto Buddy </title>
+        <link rel="stylesheet" href="css/main.css" />
+    </head>
+    <body>
+        
+
+
+<aside>
+    <h2> Inscrição - Projeto Buddy </h2>
+    <menu>
+        <li> <a href="controlador.html"> Home </a> </li>
+        <li> <a href="controlador.html"> Corpo UFJF e Intercambista </a> </li>
+        <li> <a href="controlador.html"> Inscritos </a> </li>
+    </menu>
+    
+</aside>        

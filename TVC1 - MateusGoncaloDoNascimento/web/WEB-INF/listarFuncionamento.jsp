@@ -1,17 +1,8 @@
-<%-- 
-    Document   : listarFuncionamento
-    Created on : 27/04/2018, 21:12:59
-    Author     : Mateus G
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@include file ="jspf/cabecalho-listarFuncionamento.jspf"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+        <h1> Inscrição </h1>
+        <a href="cadastrar.html"> Ver pedidos </a>
+            
+<%@include file="jspf/rodape-listarFuncionamento.jspf"%>
