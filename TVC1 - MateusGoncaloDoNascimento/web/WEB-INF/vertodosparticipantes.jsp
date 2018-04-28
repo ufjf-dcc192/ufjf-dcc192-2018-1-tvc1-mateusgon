@@ -7,8 +7,8 @@
     <tr>
         <td> Nome </td>
         <td> Email </td>
-        <td> Modificar </td>
-        <td> Excluir </td>
+        <td> Disponibilidade </td>
+        <td> Dias </td>
     </tr>
             <c:forEach items="${estudantes}" var="estudantes" >
                 <tr>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Controlador", urlPatterns = {"/controlador.html", "/cadastrar.html", "/erro.html", "/confirmacao.html", "/inscritos.html", "/senhaddm.html", "/inscritosadm.html"})
+@WebServlet(name = "Controlador", urlPatterns = {"/controlador.html", "/cadastrar.html", "/erro.html", "/confirmacao.html", "/inscritos.html", "/senhaadm.html", "/inscritosadm.html"})
 public class ControladorServlet extends HttpServlet {
 
     String loginAdm = "admin";
@@ -201,4 +201,5 @@ public class ControladorServlet extends HttpServlet {
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/senha.jsp");
         despachante.forward(request, response);
     }
+    
 }

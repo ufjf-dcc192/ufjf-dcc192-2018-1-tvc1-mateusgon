@@ -14,32 +14,32 @@
                 <tr>
                     <td> ${estudantes.nome} </td>
                     <td> ${estudantes.email} </td>
-                    <td> <a href="modificar.html?codigo=${estudantes.id}&codigo2=3" </td>
-                    <td> <a href="excluir.html?codigo=${estudantes.id}&codigo2=3" </td>
+                    <td> <a href="modificar.html?codigo=${estudantes.id}&codigo2=3"> Modificar </a> </td>
+                    <td> <a href="excluir.html?codigo=${estudantes.id}&codigo2=3"> Excluir </a> </td>
                 </tr>
             </c:forEach>
             <c:forEach items="${taes}" var="taes" >
                 <tr>
                     <td> ${taes.nome} </td>
                     <td> ${taes.email} </td>
-                    <td> <a href="modificar.html?codigo=${taes.id}&codigo2=2" </td>
-                    <td> <a href="excluir.html?codigo=${taes.id}&codigo2=2" </td>
+                    <td> <a href="modificar.html?codigo=${taes.id}&codigo2=2"> Modificar </a> </td>
+                    <td> <a href="excluir.html?codigo=${taes.id}&codigo2=2"> Excluir </a> </td>
                 </tr>
             </c:forEach>
             <c:forEach items="${intercambistas}" var="intercambistas" >
                 <tr>
                     <td> ${intercambistas.nome} </td>
                     <td> ${intercambistas.email} </td>
-                    <td> <a href="modificar.html?codigo=${intercambistas.id}&codigo2=0" </td>
-                    <td> <a href="excluir.html?codigo=${intercambistas.id}&codigo2=0" </td>
+                    <td> <a href="modificar.html?codigo=${intercambistas.id}&codigo2=0"> Modificar </a> </td>
+                    <td> <a href="excluir.html?codigo=${intercambistas.id}&codigo2=0"> Excluir </a> </td>
                 </tr>
             </c:forEach>
             <c:forEach items="${docentes}" var="docentes" >
                 <tr>
                     <td> ${docentes.nome} </td>
                     <td> ${docentes.email} </td>
-                    <td> <a href="modificar.html?codigo=${docentes.id}&codigo2=1" </td>
-                    <td> <a href="excluir.html?codigo=${docentes.id}&codigo2=1" </td>
+                    <td> <a href="modificar.html?codigo=${docentes.id}&codigo2=1"> Modificar </a> </td>
+                    <td> <a href="excluir.html?codigo=${docentes.id}&codigo2=1"> Excluir </a> </td>
                 </tr>
             </c:forEach>
 </table>
