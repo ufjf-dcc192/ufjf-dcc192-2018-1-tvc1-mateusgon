@@ -19,7 +19,6 @@
             <input type="text" name="dias" id="dias"/>
             <p> Digite um email para contato </p>
             <input type="text" name="email" id="email"/>
-            <p> Digite uma senha </p>
             <p> Digite um login </p>
             <input type="text" name="login" id="login"/>
             <p> Digite uma senha </p>
