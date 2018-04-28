@@ -41,7 +41,12 @@ public class ControladorServlet extends HttpServlet {
                 if (idTipo == 0)
                 {
                     qualificacao = "Intercambista";
-                    Integer id = ListaDeParticipantes.getIntercambista().size();
+                    int id=0;
+                    List<Pessoa> pessoas = ListaDeParticipantes.getIntercambista();
+                    for (Pessoa pessoa : pessoas) {
+                        id = pessoa.getId();
+                    }
+                    id++;
                     Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha, email);
                     p.setQualificacao(qualificacao);
                     pe = p.getId();
@@ -50,7 +55,12 @@ public class ControladorServlet extends HttpServlet {
                     if (idTipo == 1)
                     {
                         qualificacao = "Docente";
-                        Integer id = ListaDeParticipantes.getDocente().size();
+                                            int id=0;
+                        List<Pessoa> pessoas = ListaDeParticipantes.getDocente();
+                        for (Pessoa pessoa : pessoas) {
+                        id = pessoa.getId();
+                        }
+                        id++;
                         Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha, email);
                         p.setQualificacao(qualificacao);
                         pe = p.getId();
@@ -59,7 +69,12 @@ public class ControladorServlet extends HttpServlet {
                     if (idTipo == 2)
                     {
                         qualificacao = "TAE";
-                        Integer id = ListaDeParticipantes.getTAE().size();
+                                            int id=0;
+                        List<Pessoa> pessoas = ListaDeParticipantes.getTAE();
+                        for (Pessoa pessoa : pessoas) {
+                            id = pessoa.getId();
+                        }
+                        id++;
                         Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha, email);
                         p.setQualificacao(qualificacao);
                         pe = p.getId();
@@ -68,7 +83,12 @@ public class ControladorServlet extends HttpServlet {
                     if (idTipo == 3)
                     {
                         qualificacao = "Aluno";
-                        Integer id = ListaDeParticipantes.getEstudante().size();
+                                            int id=0;
+                        List<Pessoa> pessoas = ListaDeParticipantes.getEstudante();
+                        for (Pessoa pessoa : pessoas) {
+                            id = pessoa.getId();
+                        }
+                        id++;
                         Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha, email);
                         p.setQualificacao(qualificacao);
                         pe = p.getId();
