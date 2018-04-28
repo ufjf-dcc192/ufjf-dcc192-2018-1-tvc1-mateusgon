@@ -1,5 +1,6 @@
 package br.ufjf.dcc192;
 
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -9,55 +10,66 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Controlador", urlPatterns = {"/controlador.html", "/cadastrar.html", "/erro.html"})
+@WebServlet(name = "Controlador", urlPatterns = {"/controlador.html", "/cadastrar.html", "/erro.html", "/confirmacao.html"})
 public class ControladorServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getParameter("operacaoAdicionarParticipante") != null)
         {
+            Integer pe = -1;
             Integer idTipo = Integer.parseInt(request.getParameter("itens"));
             String nome = request.getParameter("nome");
             String disponibilidade = request.getParameter("disponibilidade");
+            if (request.getParameter("dias").equals(""))
+            {
+                response.sendRedirect("erro.html");
+                return;
+            }
             Integer dias = Integer.parseInt(request.getParameter("dias"));
+            String email = request.getParameter("email");
             String login = request.getParameter("login");
             String senha = request.getParameter("senha");
-            if (idTipo != null && nome != null && disponibilidade != null && dias != null && login != null && senha != null)
+            if ((!"".equals(nome)) && (!"".equals(disponibilidade)) && (!"".equals(login)) && (!"".equals(senha)) && (!"".equals(email)))
             {
                 String qualificacao = "Erro";
                 if (idTipo == 0)
                 {
                     qualificacao = "Intercambista";
                     Integer id = ListaDeParticipantes.getIntercambista().size();
-                    Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha);
+                    Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha, email);
                     p.setQualificacao(qualificacao);
+                    pe = p.getId();
                     ListaDeParticipantes.getIntercambista().add(p);
                 }
                     if (idTipo == 1)
                     {
                         qualificacao = "Docente";
                         Integer id = ListaDeParticipantes.getDocente().size();
-                        Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha);
+                        Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha, email);
                         p.setQualificacao(qualificacao);
+                        pe = p.getId();
                         ListaDeParticipantes.getDocente().add(p);
                     }
                     if (idTipo == 2)
                     {
                         qualificacao = "TAE";
                         Integer id = ListaDeParticipantes.getTAE().size();
-                        Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha);
+                        Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha, email);
                         p.setQualificacao(qualificacao);
+                        pe = p.getId();
                         ListaDeParticipantes.getTAE().add(p);
                     }
                     if (idTipo == 3)
                     {
                         qualificacao = "Aluno";
                         Integer id = ListaDeParticipantes.getEstudante().size();
-                        Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha);
+                        Pessoa p = new Pessoa(id, nome, disponibilidade, dias, login, senha, email);
                         p.setQualificacao(qualificacao);
+                        pe = p.getId();
                         ListaDeParticipantes.getEstudante().add(p);
                     }
-                response.sendRedirect("controlador.html");
+                response.sendRedirect("confirmacao.html?codigo="+idTipo+"&codigo2="+pe+"");
             }
             else
             {
@@ -81,6 +93,10 @@ public class ControladorServlet extends HttpServlet {
        {
            listarErro(request, response);
        }
+       if ("/confirmacao.html".equals(request.getServletPath()))
+       {
+           listarConfirmacaoCadastro(request, response);
+       }
     }
 
     private void listarInicio(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -95,6 +111,33 @@ public class ControladorServlet extends HttpServlet {
 
     private void listarErro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/erro.jsp");
+        despachante.forward(request, response);
+    }
+
+    private void listarConfirmacaoCadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idTipo = Integer.parseInt(request.getParameter("codigo"));
+        int codigoPessoa = Integer.parseInt(request.getParameter("codigo2"));
+        if (idTipo == 0)
+        {
+            Pessoa p = ListaDeParticipantes.getIntercambista().get(codigoPessoa);
+            request.setAttribute("pessoa", p);
+        }
+        if (idTipo == 1)
+        {
+            Pessoa p = ListaDeParticipantes.getDocente().get(codigoPessoa);
+            request.setAttribute("pessoa", p);
+        }
+        if (idTipo == 2)
+        {
+            Pessoa p = ListaDeParticipantes.getTAE().get(codigoPessoa);
+            request.setAttribute("pessoa", p);
+        }
+        if (idTipo == 3)
+        {
+            Pessoa p = ListaDeParticipantes.getEstudante().get(codigoPessoa);
+            request.setAttribute("pessoa", p);   
+        }
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/verconfirmacao.jsp");
         despachante.forward(request, response);
     }
 }

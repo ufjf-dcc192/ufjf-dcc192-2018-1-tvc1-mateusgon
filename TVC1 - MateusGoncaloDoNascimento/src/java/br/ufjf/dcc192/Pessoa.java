@@ -8,8 +8,9 @@ public class Pessoa {
     private String qualificacao;
     private String login;
     private String senha;
-
-    public Pessoa(Integer id, String nome, String disponibilidade, Integer qtddDias, String login, String senha) {
+    private String email;
+    
+    public Pessoa(Integer id, String nome, String disponibilidade, Integer qtddDias, String login, String senha, String email) {
         this.id = id;
         this.nome = nome;
         this.disponibilidade = disponibilidade;
@@ -17,6 +18,11 @@ public class Pessoa {
         this.qualificacao = "Erro";
         this.login = login;
         this.senha = senha;
+        this.email = email;
+    }
+
+    Pessoa() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Integer getQtddDias() {
@@ -73,6 +79,14 @@ public class Pessoa {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     
